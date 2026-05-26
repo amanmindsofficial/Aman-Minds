@@ -319,21 +319,16 @@
 
 <footer class="footer"><div class="wrap">© Aman Minds Initiative. Educational content only — not a substitute for professional mental health care.</div></footer>
 <script>
-let lastScroll = 0;
-
 window.addEventListener("scroll", () => {
-  const currentScroll = window.scrollY;
   const headers = document.querySelectorAll("header");
 
   headers.forEach((header) => {
-    if (currentScroll > lastScroll && currentScroll > 80) {
+    if (window.scrollY > 50) {
       header.classList.add("hide-nav");
     } else {
       header.classList.remove("hide-nav");
     }
   });
-
-  lastScroll = currentScroll;
 });
 </script>
 </body>
