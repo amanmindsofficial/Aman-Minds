@@ -317,15 +317,15 @@
 <footer class="footer"><div class="wrap">© Aman Minds Initiative. Educational content only — not a substitute for professional mental health care.</div></footer>
 <script>
 let lastScroll = 0;
-const header = document.querySelector("header");
+const headers = document.querySelectorAll("header");
 
 window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > lastScroll && currentScroll > 80) {
-        header.style.transform = "translateY(-100%)";
+        headers.forEach(header => {     header.style.transform = "translateY(-100%)"; });
     } else {
-        header.style.transform = "translateY(0)";
+        headers.forEach(header => {     header.style.transform = "translateY(0)"; });
     }
 
     lastScroll = currentScroll;
