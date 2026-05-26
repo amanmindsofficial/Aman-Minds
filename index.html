@@ -66,7 +66,10 @@
     background:rgba(251,251,248,.90);
     backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(230,237,242,.88);
-    transition:transform .3s ease;
+    transition:transform .7s ease;
+}
+    header.hide-nav {
+  transform: translateY(-100%);
 }
     .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
     .mini-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800}
@@ -317,18 +320,20 @@
 <footer class="footer"><div class="wrap">© Aman Minds Initiative. Educational content only — not a substitute for professional mental health care.</div></footer>
 <script>
 let lastScroll = 0;
-const headers = document.querySelectorAll("header");
 
 window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
+  const currentScroll = window.scrollY;
+  const headers = document.querySelectorAll("header");
 
+  headers.forEach((header) => {
     if (currentScroll > lastScroll && currentScroll > 80) {
-        headers.forEach(header => {     header.style.transform = "translateY(-100%)"; });
+      header.classList.add("hide-nav");
     } else {
-        headers.forEach(header => {     header.style.transform = "translateY(0)"; });
+      header.classList.remove("hide-nav");
     }
+  });
 
-    lastScroll = currentScroll;
+  lastScroll = currentScroll;
 });
 </script>
 </body>
