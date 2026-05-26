@@ -60,11 +60,14 @@
     body:not(:has(.page:target)) #choose{display:grid}
     body:has(.page:target) #choose{display:none}
     header{
-      position:sticky;top:0;z-index:20;
-      background:rgba(251,251,248,.88);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(230,237,242,.85);
-    }
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(251,251,248,.90);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(230,237,242,.88);
+    transition:transform .3s ease;
+}
     .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
     .mini-brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800}
     .mini-brand img{width:54px;height:54px;object-fit:contain}
@@ -312,6 +315,21 @@
 </div>
 
 <footer class="footer"><div class="wrap">© Aman Minds Initiative. Educational content only — not a substitute for professional mental health care.</div></footer>
+<script>
+let lastScroll = 0;
+const header = document.querySelector("header");
 
+window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > lastScroll && currentScroll > 80) {
+        header.style.transform = "translateY(-100%)";
+    } else {
+        header.style.transform = "translateY(0)";
+    }
+
+    lastScroll = currentScroll;
+});
+</script>
 </body>
 </html>
